@@ -1,0 +1,139 @@
+.navbar {
+    background-color: #333;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item a,
+.nav-item .category-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: 1px solid transparent;
+    transition: color 0.3s, outline-color 0.3s;
+}
+
+.nav-item a:hover,
+.nav-item .category-link:hover {
+    color: #ffcc00;
+    outline-color: #ffcc00;
+}
+
+.dropdown {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+}
+
+.dropdown li a {
+    color: #333;
+    font-size: 1rem;
+    display: block;
+    padding: 0.8rem 1rem;
+    transition: color 0.3s;
+}
+
+.dropdown li a:hover {
+    color: #ffcc00;
+}
+
+/* Sadece masaüstünde hover ile dropdown aç */
+@media (min-width: 769px) {
+    .nav-item:hover .dropdown {
+        display: block;
+    }
+}
+
+/* MOBİL */
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #333;
+        flex-direction: column;
+        gap: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .nav-links.open {
+        max-height: 500px;
+        transition: max-height 0.5s ease-in;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-item a,
+    .nav-item .category-link {
+        display: block;
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+
+    /* Dropdown mobilde iç içe görünsün */
+    .dropdown {
+        position: static;
+        background: #444;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .dropdown li a {
+        color: #fff;
+    }
+
+    /* JS ile eklenen open class */
+    .dropdown.open {
+        display: block;
+    }
+}
